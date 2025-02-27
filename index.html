@@ -1,1 +1,619 @@
-<h1>Hello<h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Nombre - Velas Aromáticas</title>
+    <style>
+        /* Variables de colores */
+        :root {
+            --color-primary: #a67c52;
+            --color-secondary: #f8f5f0;
+            --color-dark: #333333;
+            --color-light: #ffffff;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Playfair Display', serif;
+        }
+
+        /* Estilos globales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-dark);
+            background-color: var(--color-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: var(--color-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: var(--font-secondary);
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        .cart-icon {
+            font-size: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            min-height: 80vh;
+            background-color: var(--color-secondary);
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+        }
+
+        .hero-image {
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-family: var(--font-secondary);
+            font-size: 56px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #8e6a45;
+            transform: translateY(-2px);
+        }
+
+        /* Beneficios */
+        .benefits {
+            display: flex;
+            justify-content: space-between;
+            padding: 80px 40px;
+            background-color: var(--color-light);
+        }
+
+        .benefit-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .benefit-icon {
+            font-size: 40px;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            margin-bottom: 15px;
+            font-family: var(--font-secondary);
+        }
+
+        /* Productos destacados */
+        .featured-products {
+            padding: 80px 40px;
+            background-color: var(--color-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: var(--font-secondary);
+            font-size: 36px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: var(--color-light);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-family: var(--font-secondary);
+            margin-bottom: 8px;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+        }
+
+        .product-description {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background-color: transparent;
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+        }
+
+        /* Testimonios */
+        .testimonials {
+            padding: 80px 40px;
+            background-color: var(--color-light);
+        }
+
+        .testimonials-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+        }
+
+        .testimonial-card {
+            min-width: 300px;
+            background-color: var(--color-secondary);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: var(--color-primary);
+            color: var(--color-light);
+            padding: 80px 40px;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: var(--font-secondary);
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .newsletter-btn {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #222;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-dark);
+            color: var(--color-light);
+            padding: 60px 40px 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .footer-col {
+            flex: 1;
+            margin-right: 40px;
+        }
+
+        .footer-col:last-child {
+            margin-right: 0;
+        }
+
+        .footer-logo {
+            font-family: var(--font-secondary);
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 20px;
+            font-family: var(--font-secondary);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--color-primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            font-size: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .hero-content {
+                padding: 40px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .benefits {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-col {
+                margin-right: 0;
+            }
+        }
+    </style>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Tus Velas</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tienda">Tienda</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon">
+            <a href="#carrito"><i class="fas fa-shopping-cart"></i></a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Aromaterapia Natural para tu Hogar</h1>
+            <p>Nuestras velas están hechas a mano con ingredientes 100% naturales para crear una experiencia sensorial única y relajante.</p>
+            <a href="#tienda" class="btn">Descubrir Colección</a>
+        </div>
+        <div class="hero-image">
+            <img src="/api/placeholder/600/800" alt="Velas aromáticas">
+        </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="benefits">
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-leaf"></i>
+            </div>
+            <h3>100% Natural</h3>
+            <p>Elaboradas con cera de soya, aceites esenciales puros y mechas de algodón.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h3>Artesanal</h3>
+            <p>Cada vela es fabricada a mano con atención al detalle y amor por nuestro oficio.</p>
+        </div>
+        <div class="benefit-card">
+            <div class="benefit-icon">
+                <i class="fas fa-recycle"></i>
+            </div>
+            <h3>Sustentable</h3>
+            <p>Envases reutilizables y empaques biodegradables para cuidar nuestro planeta.</p>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="featured-products" id="tienda">
+        <h2 class="section-title">Productos Destacados</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/400" alt="Vela Lavanda">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Lavanda & Vainilla</h3>
+                    <div class="product-price">$15.99</div>
+                    <p class="product-description">Vela relajante con aroma a lavanda y vainilla, ideal para momentos de descanso.</p>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/400" alt="Vela Cítrica">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Cítricos & Menta</h3>
+                    <div class="product-price">$16.99</div>
+                    <p class="product-description">Mezcla refrescante de aromas cítricos y menta para energizar tu espacio.</p>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/400" alt="Vela Sándalo">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Sándalo & Cedro</h3>
+                    <div class="product-price">$17.99</div>
+                    <p class="product-description">Aromas amaderados que crean un ambiente acogedor y sofisticado.</p>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="/api/placeholder/400/400" alt="Vela Rosa">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rosa & Jazmín</h3>
+                    <div class="product-price">$18.99</div>
+                    <p class="product-description">Delicada combinación floral para crear momentos románticos y especiales.</p>
+                    <button class="add-to-cart">Agregar al Carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <div class="testimonials-container">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Las velas son increíbles, duran mucho tiempo y el aroma es muy natural, no como otras velas artificiales que he probado antes."</p>
+                <p class="testimonial-author">- María González</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Compré como regalo para mi hermana y quedó encantada. La presentación es muy elegante y el aroma llena toda la habitación."</p>
+                <p class="testimonial-author">- Carlos Rodríguez</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Son parte de mi rutina de meditación diaria. La calidad es excelente y me encanta saber que son 100% naturales."</p>
+                <p class="testimonial-author">- Ana López</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <h2>Únete a nuestra comunidad</h2>
+        <p>Suscríbete a nuestro newsletter y recibe un 10% de descuento en tu primera compra, además de consejos sobre aromaterapia y ofertas exclusivas.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="newsletter-btn">Suscribirse</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="footer-logo">Tus Velas</div>
+                <p>Velas artesanales hechas con amor e ingredientes naturales para transformar tu espacio en un santuario de bienestar.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+            <div class="footer-col footer-links">
+                <h4>Navegar</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#tienda">Tienda</a></li>
+                    <li><a href="#nosotros">Sobre Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-links">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Envíos y Devoluciones</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+            <div class="footer-col footer-links">
+                <h4>Contacto</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@tusvelas.com</li>
+                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> Calle Ejemplo 123, Ciudad</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Tus Velas. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Animación de scroll suave para los enlaces de navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Funcionalidad básica para botones "Agregar al carrito"
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.parentElement.querySelector('.product-title').textContent;
+                alert(`¡${productName} ha sido añadido al carrito!`);
+                // Aquí puedes implementar la lógica real del carrito
+            });
+        });
+    </script>
+</body>
+</html>
