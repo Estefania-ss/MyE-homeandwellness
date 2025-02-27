@@ -5,12 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Nombre - Velas Aromáticas</title>
     <style>
-        /* Variables de colores */
+        /* Variables de colores actualizadas con tu paleta */
         :root {
-            --color-primary: #a67c52;
-            --color-secondary: #f8f5f0;
-            --color-dark: #333333;
+            --color-dark-green: #475442;     /* Verde oscuro */
+            --color-sage: #7a7d6d;           /* Verde oliva/salvia */
+            --color-terracotta: #a97d66;     /* Terracota/marrón */
+            --color-blush: #ecd4c8;          /* Rosa pálido/melocotón */
+            --color-cream: #f3efe5;          /* Beige/crema */
+            
+            /* Colores funcionales */
+            --color-primary: var(--color-terracotta);
+            --color-secondary: var(--color-cream);
+            --color-accent: var(--color-sage);
+            --color-dark: var(--color-dark-green);
             --color-light: #ffffff;
+            --color-text: #333333;
+            --color-background: var(--color-cream);
+            
+            /* Fuentes */
             --font-primary: 'Montserrat', sans-serif;
             --font-secondary: 'Playfair Display', serif;
         }
@@ -24,8 +36,8 @@
 
         body {
             font-family: var(--font-primary);
-            color: var(--color-dark);
-            background-color: var(--color-light);
+            color: var(--color-text);
+            background-color: var(--color-background);
             line-height: 1.6;
         }
 
@@ -112,12 +124,14 @@
             font-size: 56px;
             margin-bottom: 20px;
             line-height: 1.2;
+            color: var(--color-dark);
         }
 
         .hero p {
             font-size: 18px;
             margin-bottom: 30px;
             max-width: 500px;
+            color: var(--color-text);
         }
 
         .btn {
@@ -132,7 +146,7 @@
         }
 
         .btn:hover {
-            background-color: #8e6a45;
+            background-color: var(--color-dark);
             transform: translateY(-2px);
         }
 
@@ -162,6 +176,7 @@
         .benefit-card h3 {
             margin-bottom: 15px;
             font-family: var(--font-secondary);
+            color: var(--color-dark);
         }
 
         /* Productos destacados */
@@ -175,6 +190,7 @@
             margin-bottom: 60px;
             font-family: var(--font-secondary);
             font-size: 36px;
+            color: var(--color-dark);
         }
 
         .products-grid {
@@ -218,6 +234,7 @@
         .product-title {
             font-family: var(--font-secondary);
             margin-bottom: 8px;
+            color: var(--color-dark);
         }
 
         .product-price {
@@ -229,6 +246,7 @@
         .product-description {
             font-size: 14px;
             margin-bottom: 15px;
+            color: var(--color-text);
         }
 
         .add-to-cart {
@@ -262,7 +280,7 @@
 
         .testimonial-card {
             min-width: 300px;
-            background-color: var(--color-secondary);
+            background-color: var(--color-blush);
             padding: 30px;
             border-radius: 8px;
         }
@@ -270,15 +288,17 @@
         .testimonial-text {
             font-style: italic;
             margin-bottom: 20px;
+            color: var(--color-text);
         }
 
         .testimonial-author {
             font-weight: 700;
+            color: var(--color-dark);
         }
 
         /* Newsletter */
         .newsletter {
-            background-color: var(--color-primary);
+            background-color: var(--color-dark-green);
             color: var(--color-light);
             padding: 80px 40px;
             text-align: center;
@@ -308,7 +328,7 @@
         }
 
         .newsletter-btn {
-            background-color: var(--color-dark);
+            background-color: var(--color-terracotta);
             color: var(--color-light);
             border: none;
             padding: 0 25px;
@@ -318,12 +338,12 @@
         }
 
         .newsletter-btn:hover {
-            background-color: #222;
+            background-color: var(--color-sage);
         }
 
         /* Footer */
         footer {
-            background-color: var(--color-dark);
+            background-color: var(--color-sage);
             color: var(--color-light);
             padding: 60px 40px 20px;
         }
@@ -359,7 +379,7 @@
         }
 
         .footer-links ul li a:hover {
-            color: var(--color-primary);
+            color: var(--color-blush);
         }
 
         .social-icons {
